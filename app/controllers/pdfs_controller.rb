@@ -1,6 +1,6 @@
 class PdfsController < ApplicationController
   def show
-    @student = {"Mark"}
+    @student = { "name" => "Marrrrk", "number" => "555-555-5555"}
 
     respond_to do |format|
       format.html
