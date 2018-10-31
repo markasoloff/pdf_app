@@ -1,15 +1,17 @@
 class PdfsController < ApplicationController
   def show
+    @student = {"Mark"}
+
     respond_to do |format|
-      # // some other formats like: format.html { render :show }
-      
+      format.html
       format.pdf do
-        pdf = ExportPdf.new
+        pdf = ReportPdf.new(@student)
         send_data pdf.render,
           filename: "export.pdf",
           type: 'application/pdf',
           disposition: 'inline'
       end
     end
+
   end
 end
