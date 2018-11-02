@@ -26,48 +26,37 @@ class ReportPdf < Prawn::Document
     text "Education", size: 15, style: :bold
     index = 50
     2.times do 
-
-    y_position = cursor - index
-
-    bounding_box([0, y_position], :width => 200, :height => 30) do
-      text "The University of Illinois", size: 15, style: :bold
-      text "degree/major"
+      y_position = cursor - index
+      bounding_box([0, y_position], :width => 200, :height => 30) do
+        @student["educations"].each do |school|
+          text school["university_name"], size: 15, style: :bold
+          text school["degree"], size: 5
+          text school["start_date"], size: 3
+        end
+      end
+      bounding_box([400, y_position], :width => 200, :height => 30) do
+        move_down 3
+        text "Dates"
+      end
+      index = index + 2
     end
-
-    bounding_box([400, y_position], :width => 200, :height => 30) do
-      move_down 3
-      text "Dates"
-    end
-
-    index = index + 2
-
-  end
 
   move_down 40
 
   text "Work", size: 15, style: :bold
   index = 60
 
-  2.times do 
-
-    y_position = cursor - index
-
-    bounding_box([0, y_position], :width => 200, :height => 30) do
-      text "Job", size: 15, style: :bold
-      text "stuff I do"
+    2.times do 
+      y_position = cursor - index
+      bounding_box([0, y_position], :width => 200, :height => 30) do
+        text "Job", size: 15, style: :bold
+        text "stuff I do"
+      end
+      bounding_box([400, y_position], :width => 200, :height => 30) do
+        move_down 3
+        text "Dates"
+      end
+      index = index + 2
     end
-
-    bounding_box([400, y_position], :width => 200, :height => 30) do
-      move_down 3
-      text "Dates"
-    end
-
-    index = index + 2
-
   end
-
-  end
-
-  
-
 end
