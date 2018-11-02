@@ -1,6 +1,6 @@
 class PdfsController < ApplicationController
   def show
-    response = HTTP.get("http://localhost:3000/api/students/#{params[:id]}")
+    response = HTTP.get("https://blooming-caverns-85738.herokuapp.com/api/students/#{params[:id]}")
     @student = response.parse
 
     respond_to do |format|
