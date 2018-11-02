@@ -1,9 +1,8 @@
 class PdfsController < ApplicationController
   def show
-    response = HTTP.get("http://localhost:3000/api/products/#{params[:id]}")
+    response = HTTP.get("http://localhost:3000/api/students/#{params[:id]}")
     @student = response.parse
-  end
-    
+
     respond_to do |format|
       format.html
       format.pdf do
